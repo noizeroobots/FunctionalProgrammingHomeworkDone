@@ -1,9 +1,19 @@
 package ru.tinkoff.fintech.homework;
 
+import java.util.Scanner;
+
 public class Main {
 
+    @SuppressWarnings("checkstyle:LocalFinalVariableName")
     public static void main(final String[] args) {
-        int[] test = getFilledArray(10, 2,
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number: ");
+        String entered = in.nextLine();
+        int input = Integer.parseInt(entered);
+        final int size = 10;
+
+        int[] test = getFilledArray(size, input,
                 (index, md) -> index + md);
         for (int i = 0; i < test.length; i++) {
             System.out.print(test[i] + " ");
@@ -11,7 +21,7 @@ public class Main {
 
         System.out.println();
 
-        test = getFilledArray(10, 2,
+        test = getFilledArray(size, input,
                 (index, md) -> index * md);
         for (int i = 0; i < test.length; i++) {
             System.out.print(test[i] + " ");
@@ -19,7 +29,7 @@ public class Main {
 
         System.out.println();
 
-        test = getFilledArray(10, 2,
+        test = getFilledArray(size, input,
                 (index, md) -> {
                     if ((index % 2) == 0) {
                         return index / 2 + md;
@@ -27,6 +37,31 @@ public class Main {
                         return index * index - md;
                     }
                 });
+        for (int i = 0; i < test.length; i++) {
+            System.out.print(test[i] + " ");
+        }
+
+        System.out.println();
+
+        // число = когда размер массива равно модификатор <произведение индекса и нуля>;
+        // когда размер массива не равно модификатору <произведение индекса и единицы>.
+        test = getFilledArray(size, input,
+                (index, md) -> {
+                    if (input == size) {
+                        return index * 0;
+                    } else {
+                        return index * 1;
+                    }
+                });
+        for (int i = 0; i < test.length; i++) {
+            System.out.print(test[i] + " ");
+        }
+
+        System.out.println();
+
+        // разность индекса и модификатора.
+        test = getFilledArray(size, input,
+                (index, md) -> index - md);
         for (int i = 0; i < test.length; i++) {
             System.out.print(test[i] + " ");
         }
