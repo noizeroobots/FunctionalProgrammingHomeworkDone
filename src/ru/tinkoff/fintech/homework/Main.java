@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    @SuppressWarnings("checkstyle:LocalFinalVariableName")
+
     public static void main(final String[] args) {
 
         Scanner in = new Scanner(System.in);
